@@ -81,7 +81,7 @@
 		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 	</div>
 
-	<p class="footer">Страница создана за <strong>{elapsed_time}</strong> секунд</p>
+	<p class="footer">Страница создана за <strong>{elapsed_time}</strong> секунд!</p>
 </div>
 
 </body>
