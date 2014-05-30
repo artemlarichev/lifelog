@@ -1,0 +1,80 @@
+@import "main.css";
+
+.table .even td{
+	background: #f0f6ff;
+}
+
+.numeric div{
+	zoom: 1;
+}
+
+.search_form{
+	width: 100%;
+	clear: none;
+}
+
+.lable_wrap input{
+	top: -3px;
+}
+
+.basket .important, .order .important{
+	width: 80%;
+}
+.logo, .user_block, .export_result span, .basket_link, .b_t_hline, .add, .edit_ico, .del_ico{
+	display: inline;
+}
+
+.edit_ico, .del_ico{
+	vertical-align: middle;
+}
+
+
+/*-------------------------------------*/
+.header_before, .header_after{
+	position: absolute;
+	width: 9px;
+	height: 160px;
+	top: 86px;
+}
+
+.header_before{
+	left: 0;
+}
+
+.header_after{
+	right: 0;
+}
+
+/*-------------------------------------*/
+
+.enter_form_before, .user_form_before, .manager_form_before{
+	position: absolute;
+	width: 15%;
+	height: 32px;
+	top: 4px;
+	left: 0;
+	background: url(../i/category_ico.png) 50% 0 no-repeat;
+}
+
+
+.static_before{
+	position: absolute;
+	height:2px;
+	width: 21%;
+	bottom: 0;
+	left: 20px;
+	background: #a7a7a7;
+	overflow: hidden;
+}
+  .field_25{
+	  margin: 0 -1px 0 0;
+  }
+  .count_unit{
+	  width: 26px;
+  }
+  .table .edit_ico{
+	  margin-left: 7px;
+  }
+.big_table_wrap.mod_1 {
+	overflow-y: auto;
+}

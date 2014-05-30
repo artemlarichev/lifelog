@@ -1,0 +1,103 @@
+@import "main.css";
+
+.base .search_category .mark, .base .search_category .mark:hover, .base .manager_search_list .mark, .base .manager_search_list .mark:hover, .base .manager_menu .mark, .base .manager_menu .mark:hover, .base .order_category .mark, .base .order_category .mark:hover {
+    color: #FFFFFF !important!;
+}
+
+.header, .manager_menu, .usep_list_options, .search_block, .index_catalog, .content_row, .static, .lable_wrap label, .lable_wrap_last label, .order_block, .main_table_wrap{
+	zoom: 1;
+}
+
+.search_block{
+	width: 100%;
+}
+
+.manager_menu a, .order_category a, .search_category a, .manager_search_list a{
+	position: relative;
+	float: left;
+}
+
+body, .wrapper {
+    width:expression(document.body.clientWidth < 1003? "1002px": "100%" );
+}
+
+.wrapper{
+	overflow: visible;
+}
+
+input.text{
+	height: 18px;
+	padding: 1px 0;
+	border: 1px solid;
+	border-color: #a7a8af #d8dce3 #dfe5ec #dfe0e7;
+}
+
+
+.table .even td{
+	background: #f0f6ff;
+}
+
+.numeric div{
+	zoom: 1;
+}
+
+.search_form{
+	width: 100%;
+	clear: none;
+}
+
+.lable_wrap input{
+	top: -3px;
+}
+
+.basket .important, .order .important{
+	width: 80%;
+}
+
+.logo, .user_block, .export_result span, .basket_link, .b_t_hline, .add, .edit_ico, .del_ico{
+	display: inline;
+}
+
+.edit_ico, .del_ico{
+	vertical-align: middle;
+}
+
+
+/*-------------------------------------*/
+.header_before, .header_after{
+	position: absolute;
+	width: 9px;
+	height: 160px;
+	top: 86px;
+}
+
+.header_before{
+	left: 0;
+}
+.header_after{
+	right: 0;
+}
+
+/*-------------------------------------*/
+
+.enter_form_before, .user_form_before, .manager_form_before{
+	position: absolute;
+	width: 15%;
+	height: 32px;
+	top: 4px;
+	left: 0;
+	background: url(../i/category_ico.png) 50% 0 no-repeat;
+}
+
+.static_before{
+	position: absolute;
+	height:2px;
+	width: 21%;
+	bottom: 0;
+	left: 20px;
+	background: #a7a7a7;
+	overflow: hidden;
+}
+
+
+

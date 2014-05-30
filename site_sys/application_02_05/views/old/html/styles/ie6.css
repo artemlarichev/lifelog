@@ -1,0 +1,379 @@
+@import "main_ie.css";
+
+html, body {
+	height: auto;
+}
+
+body, .wrapper {
+    width:expression(document.body.clientWidth < 1003? "1002px": "100%" );
+}
+
+.wrapper{
+	overflow: visible;
+}
+
+.base .nav li.first-child {
+	padding: 0 !important!;
+}
+
+
+.breadcrumbs .first-child{
+	padding: 0 !important!;
+	background: none;
+}
+
+.user_menu .first-child {
+	padding: 0 9px !important!;
+	background: none;
+}
+
+.user_menu_inner .first-child {
+	background: url(../i/separator.png) 0 3px no-repeat;
+	padding: 0 8px 0 9px;
+}
+
+.cat_block_first-child {
+	padding: 0 2% !important!;
+}
+
+.c_i_f_menu .first-child {
+	padding: 0 8px 0 0 !important!;
+	background: none;
+}
+
+.c_i_f_text p.first-child,
+.cat_block_full .c_i_f_menu li.first-child, 
+.c_i_f_text h2.first-child,
+.c_i_f_func h2.first-child,
+.s_text p.first-child {
+	padding: 0 !important!;
+}
+
+
+.c_i_f_spec table.first-child {
+	margin: 7px 0 0 !important!;
+}
+
+.base .cat_col .h_line_sub_first-child {
+	padding: 0 0 5px !important!;
+}
+
+.where_buy td.first-child {
+	font-weight: 700 !important!;
+}
+/*----------------------------------------*/
+.cat_col{
+	width: 25%;
+	padding: 0;
+}
+
+ .cat_ie {
+	zoom: 1;
+	padding: 0 4% 0 8%;
+}
+
+.cat_col .h_line_sub {
+	padding: 20px 0 5px !important;
+}
+
+.cat_col .h_line_sub:first-child {
+	padding: 0 0 5px !important;
+}
+
+.c_c_wrap {
+	padding: 0 0 35px;
+	overflow: hidden;
+}
+
+.ie_wrap{
+	width: 100%;
+}
+
+#capcha{
+	width: 90px;
+}
+
+#fio, #tel, #email{
+	width: 202px;
+}
+
+.saved{
+	position: relative;
+	top: -4px;
+}
+
+.email_form label{
+	width: 36%;
+}
+
+.form dl{
+	width: 100%;
+	overflow: hidden;
+}
+
+.form dd{
+	overflow: hidden;
+}
+
+#user, #pass{
+	width: 140px;
+}
+
+/*----------------------------------------*/
+.email_form,.email_form li ,
+.r_menu,
+.support_content,
+.tags,
+.nav,
+.curr_page,
+.e_l_item,
+.a_l_item,
+.r_l_item,
+.s_l_item,
+.h_line,
+.side_form dt,
+.cat_list,
+.c_f_b_list,
+.d_list,
+.e_list,
+.s_list,
+.s_c_list,
+.review,
+.comments,
+.s_list,
+.c_l_item dl,
+.c_l_item dt,
+.c_f_b_list li,
+.other_info a,
+.content_wrap,
+.email_form li,
+.form,
+.form dl,
+.form dd,
+.description,
+.b,
+.b_side,
+.aside_block,
+.c_f_block,
+.cat_filter,
+.side_form form,
+.c_c_wrap,
+.c_i_f_text,
+.c_i_f_func,
+.c_i_f_menu,
+.s_text,
+.email_to_Drytech .admin_form,
+.a_c_list
+{
+	zoom: 1;
+}
+
+.a_c_list li{
+	zoom: 1;
+	margin: 0 0 -4px;
+}
+
+.a_c_doc_descr textarea{
+	width: 335px;
+}
+
+.c_i_f_menu .curr_page{
+	display: inline;
+}
+
+.c_i_f_menu .curr_page .edit{
+	float: none;
+}
+
+.c_f_lv2, .c_f_lv3, .c_i_f_spec, .c_i_f_doc, .c_i_f_doc_wrap, .content_wrap{
+	zoom: 1;
+	overflow: hidden;
+}
+
+.cat_block_full .c_i_f_menu a,
+.r_menu a{
+	float: left;
+}
+
+#subscribe, #search_submit{
+	display: block;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.footer{
+	position: relative;
+	bottom: auto;
+	left: auto;
+}
+
+.form_field {
+	width: 100%;
+	height: 15px;
+	padding: 2px;
+}
+
+.logo,
+.capcha,
+.s_c_list .s_c_date,
+.base .cat_filter .edit,
+.base  .cat_filter .del,
+.admin .base  .c_i_f_menu .edit,
+.base  .h_line_sub .edit,
+.base  .s_list .edit,
+.base .s_list .del,
+.base  .a_c_list .del,
+.base  .file_wrap .del,
+.base .review_curr .edit,
+.base .comm_date .del
+.where_buy .add_partner,
+.img_name,
+.saved,
+.comm_date .edit_ico,
+.comm_date .del_ico,
+.comm_date .approve_ico{
+	display: inline;
+}
+
+.base .cat_filter .edit, .admin .base  .c_i_f_menu .edit, .base  .h_line_sub .edit, .base  .s_list .edit{
+	background-position: 0 50%;
+}
+
+.b, .b_side{
+	overflow: hidden;
+}
+
+.b img, .b_side img{
+	display: block;
+	zoom: 1;
+}
+
+.b a, .b_side a{
+	float: left;
+}
+
+.important{
+	font-weight: 700;
+}
+
+.cat_col{
+	width: 21%;
+}
+
+.nav a{
+	float: left;
+}
+
+.c_l_item{
+	width: 24%;
+	float: left;
+}
+
+.five_item .c_l_item{
+	width: 19%;
+}
+
+.six_item .c_l_item{
+	width: 16%;
+}
+/*------------------------*/
+.main_page_before{
+	z-index: 0;
+	position: absolute;
+	width: 100%;
+	height: 197px;
+	top: 88px;
+	left: 0;
+	background: #f6f5eb;
+}
+
+.no_bg .main_page_before{
+	display: none;
+}
+
+/*------------------------*/
+
+.info_wrap_before{
+	position: absolute;
+	width: 1px;
+	background: url(../i/dots_vert.png) 0 0 repeat-y;
+}
+
+.info_wrap_before{
+	height: 187px;
+	top: 5px;
+	left: 23%;
+}
+
+.main_row{
+	padding: 0;
+	margin: 20px 0 0;
+}
+
+.main_page .main_row{
+	background: url(../i/dots_vert.png) 75% 0 repeat-y;
+}
+
+.inner_two_col .main_row{
+	background: url(../i/dots_vert.png) 23% 0 repeat-y;
+}
+
+.inner_one_col_before{
+	position: absolute;
+	left: 23%;
+	top: 25px;
+	bottom: 0;
+}
+
+.inner_two_col .where_buy, .inner_two_col .email_to_Drytech{
+	background: none !important!;
+}
+/*------------------------*/
+.inner_two_col .h_line_before, .inner_one_col .h_line_before{
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	top: 8px;
+	left: -7px;
+	background: #ff6b00;
+	overflow: hidden;
+}
+
+.inner_two_col .content_row .h_line_before, .inner_one_col .content_row .h_line_before{
+	left: -10px;
+}
+
+.inner_two_col .where_buy .h_line_before, .inner_two_col .email_to_Drytech .h_line_before{
+	display: none;
+}
+
+/*------------------------*/
+.curr_page_before{
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	top: 7px;
+	left: 5px;
+	background: #ff6b00;
+	border: 1px solid #fff;
+	overflow: hidden;
+}
+
+.curr_page:hover span.curr_page_before{
+	border: 1px solid #fff !important!;
+}
+/*------------------------*/
+.c_i_f_menu_a_before, .r_menu_a_before{
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	top: 9px;
+	left: 6px;
+	background: #4a4a4a;
+	text-decoration: none !important;
+	overflow: hidden;
+}
+
+.curr_page .c_i_f_menu_a_before{
+	display: none;
+}

@@ -1,0 +1,153 @@
+@import "main_ie.css";
+
+
+.c_f_b_list li, .h_line, .other_info a, .content_wrap, .email_form li, .s_l_item, .s_list, .cat_filter .edit, .a_c_list li{
+	zoom: 1;
+}
+
+.important{
+	font-weight: 700;
+}
+
+.a_c_list li{
+	margin: 0 0 -4px;
+}
+
+.cat_col{
+	width: 21%;
+}
+
+.nav a{
+	float: left;
+}
+
+.logo, .capcha,
+.s_c_list .s_c_date,
+.base .cat_filter .edit,
+.base  .cat_filter .del,
+.admin .base  .c_i_f_menu .edit,
+.base  .h_line_sub .edit,
+.base  .s_list .edit,
+.base .s_list .del,
+.base  .a_c_list .del,
+.base  .file_wrap .del,
+.base .review_curr .edit,
+.base .comm_date .del
+.where_buy .add_partner,
+.img_name,
+.saved,
+.comm_date .edit_ico,
+.comm_date .del_ico,
+.comm_date .approve_ico{
+	display: inline;
+}
+
+.base .cat_filter .edit, .admin .base  .c_i_f_menu .edit, .base  .h_line_sub .edit, .base  .s_list .edit{
+	background-position: 0 50%;
+}
+
+.c_l_item{
+	width: 24%;
+	float: left;
+}
+
+.five_item .c_l_item{
+	width: 19%;
+}
+
+.six_item .c_l_item{
+	width: 16%;
+}
+/*------------------------*/
+.main_page_before{
+	z-index: 0;
+	position: absolute;
+	width: 100%;
+	height: 197px;
+	top: 88px;
+	left: 0;
+	background: #f6f5eb;
+}
+
+.no_bg .main_page_before{
+	display: none;
+}
+
+/*------------------------*/
+
+.info_wrap_before, .main_page_main_row_before, .inner_two_col_before{
+	position: absolute;
+	width: 1px;
+	background: url(../i/dots_vert.png) 0 0 repeat-y;
+}
+
+.info_wrap_before{
+	top: 5px;
+	left: 23%;
+	bottom: 5px;
+}
+
+.main_page_main_row_before{
+	position: absolute;
+	right: 25%;
+	top: 25px;
+	bottom: 0;
+}
+
+.inner_two_col_before, .inner_one_col_before{
+	position: absolute;
+	left: 23%;
+	top: 25px;
+	bottom: 0;
+}
+
+.inner_two_col .where_buy.main_row .inner_two_col_before, .inner_two_col .email_to_Drytech.main_row .inner_two_col_before{
+	display: none;
+}
+/*------------------------*/
+.inner_two_col .h_line_before, .inner_one_col .h_line_before{
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	top: 8px;
+	left: -7px;
+	background: #ff6b00;
+}
+
+.inner_two_col .content_row .h_line_before, .inner_one_col .content_row .h_line_before{
+	left: -10px;
+}
+
+.inner_two_col .where_buy.main_row .h_line_before, .inner_two_col .email_to_Drytech.main_row .h_line_before{
+	display: none;
+}
+
+/*------------------------*/
+.curr_page_before{
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	top: 7px;
+	left: 5px;
+	background: #ff6b00;
+	border: 1px solid #fff;
+}
+
+.curr_page:hover span.curr_page_before{
+	border: 1px solid #fff !important;
+}
+/*------------------------*/
+.c_i_f_menu_a_before, .r_menu_a_before{
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	top: 9px;
+	left: 6px;
+	background: #4a4a4a;
+	text-decoration: none !important;
+}
+
+.curr_page .c_i_f_menu_a_before{
+	display: none;
+}
+

@@ -1,0 +1,14 @@
+@import "main.css";
+
+.table .even td{
+	background: #f0f6ff;
+}
+
+.add_user_row select{
+	position: relative;
+	top: 2px;
+}
+
+.count_unit{
+ width: 30px;
+}
