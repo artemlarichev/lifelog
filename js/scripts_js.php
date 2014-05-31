@@ -1,4 +1,4 @@
-<?session_start();
+<?php session_start();
 header('Content-Type: text/html; charset=UTF-8');
 ?>
 
@@ -141,38 +141,38 @@ $('.order_box_w').fadeIn();
    
 }
 
+//добавить заказ в корзину
 function AddToBassNew()
 {
-   
+   //создаем переменные
    var gropData = {};
    var add1='';
-    var add2='';
-    var add3='';
-    var add4='';
-    var add5='';
-    var type='0_sklad';
+   var add2='';
+   var add3='';
+   var add4='';
+   var add5='';
+   var type='0_sklad';
     
+    //устанавливаем тип заказа
     if($('#part_type').val()=='ukr' ){
-    type='1_ukr';
-   
+      type='1_ukr';
     }
+    
     if($('#part_type').val()=='mp' ){
-   
-    
-    
-    type='2_mp';
+      type='2_mp';
     }
     
     $('.wrapper').removeClass('opacity');
 
-    
+    //вызываем диалоговое окно
     $.blockUI({message: $('#modal_dialog'), css: {width: '200px'}});     
+           
            if($('#bitOnly').is(':checked')) {add1=1;}else{ add1='';}
            if($('#OnlyThisBrand').is(':checked')) {add2=1;}else{ add2='';}
            if($('#bitAgree').is(':checked')) {add4=1;}else{ add3='';}
            if($('#bitWait').is(':checked')) {add5=1;}else{ add4='';}
 
-
+           //объявляем массив заказа
            gropData[0] = {
                 "id":$('#part_id').val(),    
                 "type":type,
@@ -180,13 +180,15 @@ function AddToBassNew()
                 "add1":add1,"add2":add2,"add3":add3,"add4":add4,"add5":add5,
                 "count":$('#obf_count').val()*1
              };
+           
+           //отправить заказ для добавления в корзину
            $.post(" /catalog/add_to_basket/",{
             data: $.toJSON(gropData) },function(data){
                $.unblockUI();
                 $("#basket_block").html(data) ;
             });   
 
-    }
+}
 
 
 
