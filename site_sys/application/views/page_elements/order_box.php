@@ -22,7 +22,7 @@
 						<br>
 						 <select name="type_shipment"  id="Destinationlogo" >
 						 
-							<option value="EMEW">воздухом</option>
+							<option value="EMEW" selected>воздухом</option>
 							<option value="CNTE">морем</option> 
 						</select> 
 						<br>
