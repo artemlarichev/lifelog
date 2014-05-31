@@ -149,6 +149,8 @@ class Catalog extends Controller {
 
 
 
+
+
             
                 else$this->conf['discont'] = $this->conf['margins']['rozn'];
         }else
@@ -481,7 +483,6 @@ class Catalog extends Controller {
 
                 //перебираем то, что получили
                 foreach ($data_arr as $val) {
-
 
                     //преобразование параметров
                     $id = $val['id'];
