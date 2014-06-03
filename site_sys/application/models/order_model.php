@@ -621,6 +621,7 @@ class Order_model extends Model {
         //выполняем запрос
         $SQL = "update users set basket='$basket_str' where id='" . (int) $_SESSION['user']['id'] . "'";
         $query = $this->db->query($SQL);
+        
     }
 
     //записать пользователю корзину в БД
@@ -628,6 +629,7 @@ class Order_model extends Model {
 
         $SQL = "update users set basket='' where id='" . (int) $_SESSION['user']['id'] . "'";
         $query = $this->db->query($SQL);
+        
     }
 
 }
