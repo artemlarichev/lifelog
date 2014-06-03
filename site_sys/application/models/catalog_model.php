@@ -144,18 +144,6 @@ class Catalog_model extends Model {
         return $row['name'] . " ({$row['state']})";
     }
 
-    //записать пользователю корзину в БД
-    function save_user_basket() {
-
-        //формируем из корзины строку
-        $basket_save['basket_data'] = $_SESSION['basket_data'];
-        $basket_save['basket'] = $_SESSION['basket'];
-        $basket_str = str_replace("'", "\'", serialize($basket_save));
-        //выполняем запрос
-        $SQL = "update users set basket='$basket_str'  where id='" . (int) $_SESSION['user']['id'] . "'";
-        $query = $this->db->query($SQL);
-    }
-
 }
 
 ?>
