@@ -384,8 +384,11 @@ for (var num = 1; num < (p_count*1+1); num++)
 
 
 
+
  function SaveOrder()
  {
+ 
+   //Объявляем переменные
    var gropData = {};
    var amount_=0;
    var cnt=0;
@@ -396,74 +399,90 @@ for (var num = 1; num < (p_count*1+1); num++)
    var add4='';
    var add5='';
    var in_order='1';
+   
+   //Если обязательные поля пусты, ставим предупреждение
    if($('#f_n').val()=='') {alert('Заполните контактные даные!');$('#f_n').focus();return false;}
    if($('#tel').val()=='') {alert('Заполните контактные даные!');$('#tel').focus();return false;}
-   if($('#mail').val()=='') {alert('Заполните контактные даные!');$('#mail').focus();return false;}   
+   if($('#mail').val()=='') {alert('Заполните контактные даные!');$('#mail').focus();return false;}  
+   
+   //Проверяем баланс
    if(basket_price*1>balans*1) {alert('На балансе недостаточно средств!');;return false;}
+   
+   //Вызываем диалоговое окно
    $.blockUI({message: $('#modal_dialog'), css: {width: '200px'}});
-var to_mach=0;
-  $('.hdd').css('display','none');
-  $('#ch_colspan').attr ('colspan',3);
-for (var num = 1; num < p_count+1; num++)
- {
-  if( $('#count_'+num).val()>0 )
-  	{
-  	amount=$('#amount_'+num).val()*1;
+   var to_mach=0;
+   $('.hdd').css('display','none');
+   $('#ch_colspan').attr ('colspan',3);
+  
+   //Перебераем все эллементы на странице
+   for (var num = 1; num < p_count+1; num++){
+ 
+     //Если находим эллемент у которого количество больше нуля
+     if($('#count_'+num).val()>0 ){
+  	
+        amount=$('#amount_'+num).val()*1;
   	cnt =  $('#count_'+num).val()*1;
-  	 $('#nal_'+num).html('');
-       if(  $('#type_'+num).val()=='0_sklad' ){
-       if( amount<cnt   )
-  		{
-  		to_mach=1;
-  		  	 $('#nal_'+num).html(amount);
+  	 
+        $('#nal_'+num).html('');
+       
+        if(  $('#type_'+num).val()=='0_sklad' ){
+        
+           if(amount < cnt){
+            
+            to_mach=1;
+  	    $('#nal_'+num).html(amount);
 
-  		} }
+           } 
+        }
 
-	       if($('#add1_'+num).is(':checked')) {add1=1;}else{ add1='';}
-	       if($('#add2_'+num).is(':checked')) {add2=1;}else{ add2='';}
-	       if($('#add3_'+num).is(':checked')) {add3=1;}else{ add3='';}
-	       if($('#add4_'+num).is(':checked')) {add4=1;}else{ add4='';}
-	       if($('#add5_'+num).is(':checked')) {add5=1;}else{ add5='';}
-           if($('#in_order_'+num).is(':checked')) {in_order='1';}else{ in_order='0';} 
+     //Ставим признаки "отмечено"
+     if($('#add1_'+num).is(':checked')) {add1=1;}else{ add1='';}
+     if($('#add2_'+num).is(':checked')) {add2=1;}else{ add2='';}
+     if($('#add3_'+num).is(':checked')) {add3=1;}else{ add3='';}
+     if($('#add4_'+num).is(':checked')) {add4=1;}else{ add4='';}
+     if($('#add5_'+num).is(':checked')) {add5=1;}else{ add5='';}
+     if($('#in_order_'+num).is(':checked')) {in_order='1';}else{ in_order='0';} 
 
-   			 gropData[num] = {
-	            "id":$('#id_'+num).val(),"type":$('#type_'+num).val(),
-                "in_order":in_order,
-                "hidden":$('#hiden_'+num).val(),
-	            "add1":add1,"add2":add2,"add3":add3,"add4":add4,"add5":add5,
-	            "count":$('#count_'+num).val()
-             };
- 	}
- }
-        if( to_mach>0 )
-        if( to_mach>0 )
-  		{
-            $('#ch_colspan').attr ('colspan',4);
-            $('.hdd').css('display','');
+     //Собираем данные
+     gropData[num] = {
+	    "id":$('#id_'+num).val(),"type":$('#type_'+num).val(),
+            "in_order":in_order,
+            "hidden":$('#hiden_'+num).val(),
+	    "add1":add1,"add2":add2,"add3":add3,"add4":add4,"add5":add5,
+	    "count":$('#count_'+num).val()
+         };
+    }
+  }
+  
+  //Если количество заказа больше наличия
+  if( to_mach>0 ){
+    
+   $('#ch_colspan').attr ('colspan',4);
+   $('.hdd').css('display','');
+   alert('Количество заказа больше наличия!');
+   $.unblockUI();  return false;
 
-  			alert('Количество заказа больше наличия!');
+  }
 
-          $.unblockUI();  return false;
+  //если небыл выбран товар
+  if($('#suma2').html()*1<1) {alert('Ничего не выбрано!');$.unblockUI();$('#f_n').focus();return false;}
 
-  		}
-
-   if($('#suma2').html()*1<1) {alert('Ничего не выбрано!');$.unblockUI();$('#f_n').focus();return false;}
-
-         $.post(" /catalog/add_to_basket/0",{
-			data: $.toJSON(gropData),
-			 f_n:$('#f_n').val(),
-			 tel:$('#tel').val(),
-			  comment:$('#comments').val(),
-			 email:$('#mail').val()
-			 },function(data){
-             if(data=='end'){  //document.location.href = "/client/orders/0/1";
-             }
-              //$("#basket_block").html(data);
-               $.post(" /catalog/login_box/" ,{data: '' },function(data){$("#login").html(data) ;});
-              //$(".content_row").html(" <b>Ваш заказ принят.</b>");
-                $(".basket_res").html(" <b style='margin-left: 50px;'>Ваш заказ принят.</b>");
-              $.unblockUI();
-	  	  });
+  $.post(" /catalog/add_to_basket/0",{
+      data: $.toJSON(gropData),
+      f_n:$('#f_n').val(),
+      tel:$('#tel').val(),
+      comment:$('#comments').val(),
+      email:$('#mail').val()
+   },function(data){
+       if(data=='end'){  //document.location.href = "/client/orders/0/1";}
+   
+   //$("#basket_block").html(data);
+   
+   $.post(" /catalog/login_box/" ,{data: '' },function(data){$("#login").html(data) ;});
+   //$(".content_row").html(" <b>Ваш заказ принят.</b>");
+   $(".basket_res").html(" <b style='margin-left: 50px;'>Ваш заказ принят.</b>");
+   $.unblockUI();
+   });
 
 
 }
