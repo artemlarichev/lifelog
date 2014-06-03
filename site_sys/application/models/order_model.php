@@ -275,7 +275,7 @@ class Order_model extends Model {
 
 
                 $this->db->insert('order_details', $item['order_detail']);
-                $this->megaparts->sent_to_basket($item, $this->db->insert_id());
+                //$this->megaparts->sent_to_basket($item, $this->db->insert_id());
             }
             $this->refresh_order($order_id);
             $this->pay_model->add_pay_order($order_id);
@@ -561,10 +561,6 @@ class Order_model extends Model {
             </div>
             </div>
             </div>
-
-
-
-
             ";
         $title = 'Новий заказ на сайте Джапан АВТО';
         if (!isset($_SESSION['user'])) {
@@ -577,9 +573,6 @@ class Order_model extends Model {
     // оповещение менеджера о запросе            
     function send_manager_help_mail() {
 
-
-
-
         $text.="<div class='basket_info'>
             <dl class='basket_user_form'>
             <dt><label for='f_n'>ФИО:</label></dt>
@@ -588,7 +581,6 @@ class Order_model extends Model {
             <dd>" . $_POST['phone_num'] . "</dd>
             <dt><label for='mail'>Почта:</label></dt>
             <dd>" . $_POST['email'] . "</dd>
-
             <dt><label for='mail'>Марка:</label></dt>
             <dd>" . $_POST['sel_brand'] . "</dd>
             <dt><label for='mail'>Модель и модификация:</label></dt>
@@ -607,25 +599,35 @@ class Order_model extends Model {
             <dd>" . $_POST['num_carcass'] . "</dd>
             <dt><label for='mail'>VIN-код:</label></dt>
             <dd>" . $_POST['vin_code'] . "</dd>
-
             <dt><label for='mail'>Текст запроса:</label></dt>
             <dd>" . $_POST['text'] . "</dd>
-
-
-
             </dl>
-
             </div>
             </div>
             </div>
-
-
-
-
             ";
         $title = 'Запрос менеджеру на сайте Джапан АВТО';
 
         send_mail_msg($title, $text, 'japan-auto_bumer@ukr.net');
+    }
+
+    //записать пользователю корзину в БД
+    function save_user_basket() {
+
+        //формируем из корзины строку
+        $basket_save['basket_data'] = $_SESSION['basket_data'];
+        $basket_save['basket'] = $_SESSION['basket'];
+        $basket_str = str_replace("'", "\'", serialize($basket_save));
+        //выполняем запрос
+        $SQL = "update users set basket='$basket_str' where id='" . (int) $_SESSION['user']['id'] . "'";
+        $query = $this->db->query($SQL);
+    }
+
+    //записать пользователю корзину в БД
+    function clear_user_tmp_order() {
+
+        $SQL = "update users set basket='' where id='" . (int) $_SESSION['user']['id'] . "'";
+        $query = $this->db->query($SQL);
     }
 
 }
