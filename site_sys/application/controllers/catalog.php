@@ -151,6 +151,19 @@ class Catalog extends Controller {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
             
                 else$this->conf['discont'] = $this->conf['margins']['rozn'];
         }else
@@ -570,7 +583,7 @@ class Catalog extends Controller {
                         }
                     }
 
-//                    } elseif ($type == '1_ukr') {
+//                  TODO:проверить правильность расчтов } elseif ($type == '1_ukr') {
 //                        $data['type'] = $type;
 //                        $data = $this->data->get_row_ukr($id);
 //                        $_SESSION['basket'][$id_type]['price_end'] = $this->catalog_model->get_price_ukr($data, $kurs, $discount);
@@ -581,9 +594,12 @@ class Catalog extends Controller {
             };
         }
 
+
+        //если приходит команда отправки в заказ
         if ($f_n == TRUE) {
-            error_reporting(E_ALL);
+
             //$this->_close_order();
+
             print('end');
         } else {
             $this->load->view('page_elements/basket_block');
@@ -893,41 +909,72 @@ class Catalog extends Controller {
         $this->load->view('mpart', $data);
     }
 
-    // пересчет корзины
+    //пересчет корзины
     function _refresh_basket() {
+
         $count = 0;
         $sum = 0;
+
+        //перебираем содержимое корзины в сессии
         foreach ($_SESSION['basket'] as $value) {
-            if (!isset($value['in_order']))
-                $value['in_order'] = 1;
-            $count = $count + $value['bascet_count'];
-            if ($value['type'] == '0_sklad') {
-                if (isset($value['hidden']))
-                    $nac = 'hidden'; else
-                    $nac = $this->conf['nacenka'];
-                if ($_SESSION['basket_data']['val'] == 'грн') {
-                    $sum = $sum + $value['price_end'] * $value['bascet_count'] * $value['in_order'];
+
+            //Устанавливаем значения переменных
+            $type = $value['type'];
+            $price = $value['price_end'];
+            $bascet_count = $value['bascet_count'];
+            $currency = $_SESSION['basket_data']['val'];
+            $kurs_cfg = $this->conf['kurs'];
+            $discont_cfg = $this->conf['discont'];
+            $nacenka_cfg = $this->conf['nacenka'];
+
+            //определяем параметр in_order
+            if (!isset($value['in_order'])) {
+                $in_order = 1;
+            } else {
+                $in_order = $value['in_order'];
+            }
+
+            //Считаем сколько всего элементов в корзине
+            $count = $count + $bascet_count;
+
+            //Если есть на складе
+            if ($type == '0_sklad') {
+
+                if (isset($value['hidden'])) {
+                    $nac = 'hidden';
                 } else {
-                    $sum = $sum + $value['price_end'] * $value['bascet_count'] * $value['in_order'];
+                    $nac = $nacenka_cfg;
                 }
-            } elseif ($value['type'] == '1_ukr') {
-                if ($_SESSION['basket_data']['val'] == 'грн') {
-                    $sum = $sum + $this->catalog_model->get_price_ukr($value, $this->conf['kurs'], $this->conf['discont']) * $value['bascet_count'] * $value['in_order'];
+
+                if ($currency == 'грн') {
+                    $sum = $sum + $price * $bascet_count * $in_order;
                 } else {
-                    $sum = $sum + $this->catalog_model->get_price_ukr($value, 1, $this->conf['discont']) * $value['bascet_count'] * $value['in_order'];
+                    $sum = $sum + $price * $bascet_count * $in_order;
                 }
-            } elseif ($value['type'] == '2_mp') {
-                $sum = $sum + number_format($value['price_end'] * $value['bascet_count'] * $value['in_order'], 2, '.', '');
+
+                //Если есть на складах в Украине
+            } elseif ($type == '1_ukr') {
+
+                if ($currency == 'грн') {
+                    $sum = $sum + $this->catalog_model->get_price_ukr($value, $kurs_cfg, $discont_cfg) * $bascet_count * $in_order;
+                } else {
+                    $sum = $sum + $this->catalog_model->get_price_ukr($value, 1, $discont_cfg) * $bascet_count * $in_order;
+                }
+
+                //Если за границей
+            } elseif ($type == '2_mp') {
+                
+                $sum = $sum + number_format($price * $bascet_count * $in_order, 2, '.', '');
             }
         }
+
+        //устанавливаем значения в сессию
         $_SESSION['basket_data']['count'] = $count;
         $_SESSION['basket_data']['sum'] = $sum;
+
+        //если под пользователем сохраняем ему значение корзины
         if (isset($_SESSION['user'])) {
-            $basket_save['basket_data'] = $_SESSION['basket_data'];
-            $basket_save['basket'] = $_SESSION['basket'];
-            $basket_str = str_replace("'", "\'", serialize($basket_save));
-            $SQL = "update users set basket='$basket_str'  where id='" . (int) $_SESSION['user']['id'] . "'";
-            $query = $this->db->query($SQL);
+            $this->catalog_model->save_user_basket();
         }
     }
 
