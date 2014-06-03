@@ -626,7 +626,7 @@ class Order_model extends Model {
 
     //записать пользователю корзину в БД
     function clear_user_tmp_order() {
-
+        //выполняем запрос
         $SQL = "update users set basket='' where id='" . (int) $_SESSION['user']['id'] . "'";
         $query = $this->db->query($SQL);
         

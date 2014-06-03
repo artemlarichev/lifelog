@@ -467,6 +467,7 @@ for (var num = 1; num < (p_count*1+1); num++)
   //если небыл выбран товар
   if($('#suma2').html()*1<1) {alert('Ничего не выбрано!');$.unblockUI();$('#f_n').focus();return false;}
 
+  //Используем вторую часть скрипта add_to_basket
   $.post(" /catalog/add_to_basket/0",{
       data: $.toJSON(gropData),
       f_n:$('#f_n').val(),
